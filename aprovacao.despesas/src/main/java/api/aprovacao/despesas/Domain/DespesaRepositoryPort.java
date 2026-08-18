@@ -9,5 +9,5 @@ public interface DespesaRepositoryPort {
     Optional<Despesa> buscarPorId(Long id);
     List<Despesa> listarTodas();
     List<Despesa> listarPendentes();
-    List<Despesa> listarPorFUncionario();
+    List<Despesa> listarPorFuncionario(Long funcionarioId);
 }
