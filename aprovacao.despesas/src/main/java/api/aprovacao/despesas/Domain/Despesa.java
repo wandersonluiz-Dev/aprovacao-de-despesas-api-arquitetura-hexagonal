@@ -12,15 +12,17 @@ public class Despesa {
     private LocalDate data;
     private StatusDespesa statusDespesa;
     private Funcionario solicitante;
+    private String motivoRejeicao;
 
 
-    public Despesa(Long id, BigDecimal valor, String categoria, String descricao, LocalDate data, StatusDespesa statusDespesa, Funcionario solicitante) {
+    public Despesa(Long id, BigDecimal valor, String categoria, String descricao, LocalDate data, StatusDespesa statusDespesa, Funcionario solicitante, String motivoRejeicao) {
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
         this.data = data;
         this.statusDespesa = statusDespesa;
         this.solicitante = solicitante;
+        this.motivoRejeicao = motivoRejeicao;
     }
 
     public Long getId() {
@@ -77,5 +79,14 @@ public class Despesa {
 
     public void setSolicitante(Funcionario solicitante) {
         this.solicitante = solicitante;
+    }
+
+
+    public String getMotivoRejeicao() {
+        return motivoRejeicao;
+    }
+
+    public void setMotivoRejeicao(String motivoRejeicao) {
+        this.motivoRejeicao = motivoRejeicao;
     }
 }
