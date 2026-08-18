@@ -8,4 +8,6 @@ public interface DespesaRepositoryPort {
     Despesa salvar(Despesa despesa);
     Optional<Despesa> buscarPorId(Long id);
     List<Despesa> listarTodas();
+    List<Despesa> listarPendentes();
+    List<Despesa> listarPorFUncionario();
 }
