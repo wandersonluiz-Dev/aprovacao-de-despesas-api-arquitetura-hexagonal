@@ -2,15 +2,15 @@ package api.aprovacao.despesas.Domain;
 
 public class Funcionario {
 
-    private String nome;
+    private String nomeFuncionario;
     private String cargo;
 
-    public String getNome() {
-        return nome;
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFuncionario(String nome) {
+        this.nomeFuncionario = nome;
     }
 
     public String getCargo() {
@@ -21,8 +21,8 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public Funcionario(String nome, String cargo) {
-        this.nome = nome;
+    public Funcionario(String nomeFuncionario, String cargo) {
+        this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
 
 
