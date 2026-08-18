@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 public class Despesa {
 
+    private Long id;
     private BigDecimal valor;
     private String categoria;
     private String descricao;
@@ -13,13 +14,21 @@ public class Despesa {
     private Funcionario solicitante;
 
 
-    public Despesa(BigDecimal valor, String categoria, String descricao, LocalDate data, StatusDespesa statusDespesa, Funcionario solicitante) {
+    public Despesa(Long id, BigDecimal valor, String categoria, String descricao, LocalDate data, StatusDespesa statusDespesa, Funcionario solicitante) {
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
         this.data = data;
         this.statusDespesa = statusDespesa;
         this.solicitante = solicitante;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public BigDecimal getValor() {
