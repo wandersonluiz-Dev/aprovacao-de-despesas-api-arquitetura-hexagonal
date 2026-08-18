@@ -2,15 +2,24 @@ package api.aprovacao.despesas.Domain;
 
 public class Funcionario {
 
-    private String nome;
+    private Long id;
+    private String nomeFuncionario;
     private String cargo;
 
-    public String getNome() {
-        return nome;
+    public Long getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nome) {
+        this.nomeFuncionario = nome;
     }
 
     public String getCargo() {
@@ -21,8 +30,8 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public Funcionario(String nome, String cargo) {
-        this.nome = nome;
+    public Funcionario(Long id, String nomeFuncionario, String cargo) {
+        this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
 
 
