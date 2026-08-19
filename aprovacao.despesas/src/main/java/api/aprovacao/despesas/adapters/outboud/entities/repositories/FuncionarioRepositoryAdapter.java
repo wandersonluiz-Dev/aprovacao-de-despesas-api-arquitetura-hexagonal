@@ -1,7 +1,8 @@
-package api.aprovacao.despesas.Infrastructure.Persistence;
+package api.aprovacao.despesas.adapters.outboud.entities.repositories;
 
-import api.aprovacao.despesas.Domain.Funcionario;
-import api.aprovacao.despesas.Domain.FuncionarioRepositoryPort;
+import api.aprovacao.despesas.adapters.outboud.entities.FuncionarioJpaEntity;
+import api.aprovacao.despesas.domain.funcionario.Funcionario;
+import api.aprovacao.despesas.domain.funcionario.FuncionarioRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -34,6 +35,11 @@ public class FuncionarioRepositoryAdapter implements FuncionarioRepositoryPort {
                 stream().
                 map(this::paraDomain).
                 toList();
+    }
+
+    @Override
+    public Boolean existsByNomeFuncionario(String nomeFuncionario) {
+        return jpaRepository.existsByNomeFuncionario(nomeFuncionario);
     }
 
     private FuncionarioJpaEntity paraJpaEntity(Funcionario funcionario) {

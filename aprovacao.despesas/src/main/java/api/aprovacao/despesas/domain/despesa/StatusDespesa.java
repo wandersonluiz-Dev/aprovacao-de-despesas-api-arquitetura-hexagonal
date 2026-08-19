@@ -1,4 +1,4 @@
-package api.aprovacao.despesas.Domain;
+package api.aprovacao.despesas.domain.despesa;
 
 public enum StatusDespesa {
     APROVADO,

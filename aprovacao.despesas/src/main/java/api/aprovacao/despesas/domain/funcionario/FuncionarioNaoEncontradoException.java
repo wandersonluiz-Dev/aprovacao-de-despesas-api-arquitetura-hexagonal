@@ -1,4 +1,4 @@
-package api.aprovacao.despesas.Exception;
+package api.aprovacao.despesas.domain.funcionario;
 
 public class FuncionarioNaoEncontradoException extends RuntimeException {
     public FuncionarioNaoEncontradoException() {

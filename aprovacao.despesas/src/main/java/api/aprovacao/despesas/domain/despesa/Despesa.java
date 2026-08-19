@@ -1,4 +1,6 @@
-package api.aprovacao.despesas.Domain;
+package api.aprovacao.despesas.domain.despesa;
+
+import api.aprovacao.despesas.domain.funcionario.Funcionario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,14 +17,22 @@ public class Despesa {
     private String motivoRejeicao;
 
 
-    public Despesa(Long id, BigDecimal valor, String categoria, String descricao, LocalDate data, StatusDespesa statusDespesa, Funcionario solicitante, String motivoRejeicao) {
+    public Despesa(Long id,
+                   BigDecimal valor,
+                   String categoria,
+                   String descricao,
+                   LocalDate data,
+                   Funcionario solicitante) {
+
+        this.id = id;
         this.valor = valor;
         this.categoria = categoria;
         this.descricao = descricao;
         this.data = data;
-        this.statusDespesa = statusDespesa;
         this.solicitante = solicitante;
-        this.motivoRejeicao = motivoRejeicao;
+        this.statusDespesa = valor.compareTo(new BigDecimal("500")) <= 0
+                ? StatusDespesa.APROVADO
+                : StatusDespesa.PENDENTE;
     }
 
     public Long getId() {
@@ -80,7 +90,6 @@ public class Despesa {
     public void setSolicitante(Funcionario solicitante) {
         this.solicitante = solicitante;
     }
-
 
     public String getMotivoRejeicao() {
         return motivoRejeicao;
