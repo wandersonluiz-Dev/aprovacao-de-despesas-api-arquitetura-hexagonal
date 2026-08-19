@@ -1,10 +1,12 @@
-package api.aprovacao.despesas.Infrastructure.Persistence;
+package api.aprovacao.despesas.adapters.outboud.entities.repositories;
 
-import api.aprovacao.despesas.Domain.Despesa;
-import api.aprovacao.despesas.Domain.DespesaRepositoryPort;
-import api.aprovacao.despesas.Domain.Funcionario;
-import api.aprovacao.despesas.Domain.StatusDespesa;
-import api.aprovacao.despesas.Exception.FuncionarioNaoEncontradoException;
+import api.aprovacao.despesas.adapters.outboud.entities.DespesaJpaEntity;
+import api.aprovacao.despesas.adapters.outboud.entities.FuncionarioJpaEntity;
+import api.aprovacao.despesas.domain.despesa.Despesa;
+import api.aprovacao.despesas.domain.despesa.DespesaRepositoryPort;
+import api.aprovacao.despesas.domain.funcionario.Funcionario;
+import api.aprovacao.despesas.domain.despesa.StatusDespesa;
+import api.aprovacao.despesas.domain.funcionario.FuncionarioNaoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -83,10 +85,7 @@ public class DespesaRepsitoryAdapter implements DespesaRepositoryPort {
                 entity.getCategoria(),
                 entity.getDescricao(),
                 entity.getData(),
-                entity.getStatusDespesa(),
-                solicitante,
-                entity.getMotivoRejeicao()
-        );
+                solicitante);
     }
 
     private Funcionario paraFuncionarioDomain(FuncionarioJpaEntity entity) {

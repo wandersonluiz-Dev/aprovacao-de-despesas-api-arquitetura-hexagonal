@@ -1,4 +1,4 @@
-package api.aprovacao.despesas.Infrastructure.Persistence;
+package api.aprovacao.despesas.adapters.outboud.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package api.aprovacao.despesas.Infrastructure.Persistence;
+package api.aprovacao.despesas.adapters.outboud.entities;
 
-import api.aprovacao.despesas.Domain.StatusDespesa;
+import api.aprovacao.despesas.domain.despesa.StatusDespesa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
