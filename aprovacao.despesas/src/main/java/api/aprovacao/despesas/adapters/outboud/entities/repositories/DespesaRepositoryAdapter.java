@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class DespesaRepsitoryAdapter implements DespesaRepositoryPort {
+public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
 
     private final DespesaJpaRepository jpaRepository;
     private final FuncionarioJpaRepository funcionarioJpaRepository;
