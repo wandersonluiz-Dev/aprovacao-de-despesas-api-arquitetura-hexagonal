@@ -16,6 +16,8 @@ public class Despesa {
     private Funcionario solicitante;
     private String motivoRejeicao;
 
+    private static final BigDecimal LIMITE_AUTO_APROVACAO = new BigDecimal("500");
+
 
     public Despesa(Long id,
                    BigDecimal valor,
@@ -30,72 +32,67 @@ public class Despesa {
         this.descricao = descricao;
         this.data = data;
         this.solicitante = solicitante;
-        this.statusDespesa = valor.compareTo(new BigDecimal("500")) <= 0
+        this.statusDespesa = valor.compareTo(LIMITE_AUTO_APROVACAO) <= 0
                 ? StatusDespesa.APROVADO
                 : StatusDespesa.PENDENTE;
+        this.motivoRejeicao = null;
     }
+
+    public void aprovar() {
+        if (this.statusDespesa != StatusDespesa.PENDENTE) {
+            throw new DespesaNaoPendenteException();
+        }
+    }
+
+    public void rejeitar(String motivo) {
+        if (this.statusDespesa != StatusDespesa.PENDENTE) {
+            throw new DespesaNaoPendenteException();
+        }
+        if (motivo == null || motivo.isBlank()) {
+            throw new MotivoDaRejeicaoObrigatorioException();
+        }
+        this.statusDespesa = StatusDespesa.REJEITADO;
+        this.motivoRejeicao = motivo;
+    }
+
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
     public LocalDate getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
 
     public StatusDespesa getStatusDespesa() {
         return statusDespesa;
     }
 
-    public void setStatusDespesa(StatusDespesa statusDespesa) {
-        this.statusDespesa = statusDespesa;
-    }
 
     public Funcionario getSolicitante() {
         return solicitante;
     }
 
-    public void setSolicitante(Funcionario solicitante) {
-        this.solicitante = solicitante;
-    }
 
     public String getMotivoRejeicao() {
         return motivoRejeicao;
     }
 
-    public void setMotivoRejeicao(String motivoRejeicao) {
-        this.motivoRejeicao = motivoRejeicao;
-    }
 }
