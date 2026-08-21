@@ -42,6 +42,7 @@ public class Despesa {
         if (this.statusDespesa != StatusDespesa.PENDENTE) {
             throw new DespesaNaoPendenteException();
         }
+        this.statusDespesa = StatusDespesa.APROVADO;
     }
 
     public void rejeitar(String motivo) {
