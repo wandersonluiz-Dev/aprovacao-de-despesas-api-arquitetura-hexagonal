@@ -1,4 +1,4 @@
-package api.aprovacao.despesas.adapters.inbound;
+package api.aprovacao.despesas.adapters.controller;
 
 import api.aprovacao.despesas.application.AprovarDespesaUseCase;
 import api.aprovacao.despesas.application.CriarDespesaUseCase;
