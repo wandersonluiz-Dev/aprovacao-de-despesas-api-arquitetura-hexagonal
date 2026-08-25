@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/funcionario")
@@ -33,6 +35,17 @@ public class FuncionarioController {
                 .orElseThrow(FuncionarioNaoEncontradoException::new);
 
         return new FuncionarioResponseDto(funcionario);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<FuncionarioResponseDto> listarTodos() {
+        List<Funcionario> funcionarios = funcionarioRepositoryPort.listarTodos();
+
+        return funcionarios
+                .stream()
+                .map(FuncionarioResponseDto::new).toList();
+
     }
 
 
