@@ -1,4 +1,4 @@
-package api.aprovacao.despesas.adapters.controller;
+package api.aprovacao.despesas.adapters.inbound.controller;
 
 import api.aprovacao.despesas.application.CriarFuncionarioUseCase;
 import api.aprovacao.despesas.domain.funcionario.*;
