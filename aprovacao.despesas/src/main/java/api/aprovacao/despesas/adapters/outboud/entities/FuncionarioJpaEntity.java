@@ -25,7 +25,7 @@ public class FuncionarioJpaEntity {
     @Column(nullable = false)
     private String cargo;
 
-    @OneToMany(mappedBy = "despesa")
+    @OneToMany(mappedBy = "solicitante")
     private List<DespesaJpaEntity> despesa;
 
 }
