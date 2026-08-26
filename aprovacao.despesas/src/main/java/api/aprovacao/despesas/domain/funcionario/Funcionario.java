@@ -31,6 +31,7 @@ public class Funcionario {
     }
 
     public Funcionario(Long id, String nomeFuncionario, String cargo) {
+        this.id = id;
         this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
 
