@@ -33,7 +33,6 @@ public class DespesaJpaEntity {
     @Column(nullable = false)
     private LocalDate data;
 
-    @Column(nullable = false)
     private String motivoRejeicao;
 
    @Enumerated(EnumType.STRING)
