@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class FuncionarioJpaEntity {
+public class JpaFuncionarioEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +26,6 @@ public class FuncionarioJpaEntity {
     private String cargo;
 
     @OneToMany(mappedBy = "solicitante")
-    private List<DespesaJpaEntity> despesa;
+    private List<JpaDespesaEntity> despesa;
 
 }

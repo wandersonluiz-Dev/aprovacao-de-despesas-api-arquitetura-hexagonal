@@ -1,7 +1,7 @@
 package api.aprovacao.despesas.adapters.outboud.entities.repositories;
 
-import api.aprovacao.despesas.adapters.outboud.entities.DespesaJpaEntity;
-import api.aprovacao.despesas.adapters.outboud.entities.FuncionarioJpaEntity;
+import api.aprovacao.despesas.adapters.outboud.entities.JpaDespesaEntity;
+import api.aprovacao.despesas.adapters.outboud.entities.JpaFuncionarioEntity;
 import api.aprovacao.despesas.domain.despesa.Despesa;
 import api.aprovacao.despesas.domain.despesa.DespesaRepositoryPort;
 import api.aprovacao.despesas.domain.funcionario.Funcionario;
@@ -23,8 +23,8 @@ public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
     @Override
     public Despesa salvar(Despesa despesa) {
 
-        DespesaJpaEntity entity = paraJpaEntity(despesa);
-        DespesaJpaEntity salva = jpaRepository.save(entity);
+        JpaDespesaEntity entity = paraJpaEntity(despesa);
+        JpaDespesaEntity salva = jpaRepository.save(entity);
 
         return paraDomain(salva);
     }
@@ -58,9 +58,9 @@ public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
     }
 
 
-    private DespesaJpaEntity paraJpaEntity(Despesa despesa) {
+    private JpaDespesaEntity paraJpaEntity(Despesa despesa) {
 
-        DespesaJpaEntity entity = new DespesaJpaEntity();
+        JpaDespesaEntity entity = new JpaDespesaEntity();
         entity.setId(despesa.getId());
         entity.setValor(despesa.getValor());
         entity.setCategoria(despesa.getCategoria());
@@ -68,14 +68,14 @@ public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
         entity.setData(despesa.getData());
         entity.setStatusDespesa(despesa.getStatusDespesa());
 
-        FuncionarioJpaEntity solicitante = funcionarioJpaRepository.findById(despesa.getSolicitante().getId())
+        JpaFuncionarioEntity solicitante = funcionarioJpaRepository.findById(despesa.getSolicitante().getId())
                 .orElseThrow(FuncionarioNaoEncontradoException::new);
         entity.setSolicitante(solicitante);
 
         return entity;
     }
 
-    private Despesa paraDomain(DespesaJpaEntity entity) {
+    private Despesa paraDomain(JpaDespesaEntity entity) {
 
         Funcionario solicitante = paraFuncionarioDomain(entity.getSolicitante());
 
@@ -93,7 +93,7 @@ public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
         return despesa;
     }
 
-    private Funcionario paraFuncionarioDomain(FuncionarioJpaEntity entity) {
+    private Funcionario paraFuncionarioDomain(JpaFuncionarioEntity entity) {
 
         return new Funcionario(
                 entity.getId(),
