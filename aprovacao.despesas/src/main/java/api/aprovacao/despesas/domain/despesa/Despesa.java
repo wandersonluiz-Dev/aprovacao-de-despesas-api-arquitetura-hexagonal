@@ -56,6 +56,10 @@ public class Despesa {
         this.motivoRejeicao = motivo;
     }
 
+    public void restaurarStatus(StatusDespesa statusDespesaReal, String motivoRejeicaoReal) {
+        this.statusDespesa = statusDespesaReal;
+        this.motivoRejeicao = motivoRejeicaoReal;
+    }
 
     public Long getId() {
         return id;
