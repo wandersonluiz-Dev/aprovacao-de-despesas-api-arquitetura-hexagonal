@@ -1,0 +1,31 @@
+ services:
+   app:
+     build: .
+     container_name: aprovacao-despesa-app
+     ports:
+       -  "8080:8080"
+     environment:
+       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/aprovacao_despesa
+       SPRING_DATASOURCE_USERNAME: postgres
+       SPRING_DATASOURCE_PASSWORD: Bbk5521@
+     depends_on:
+       - db
+
+
+   db:
+     image:  postgres:16-alpine
+     container_name: aprovacao-despesa-db
+     environment:
+       POSTGRES_DB: aprovacao_despesa
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: Bbk5521@
+     ports:
+       - "5432:5432"
+     volumes:
+       - postgres_data:/var/lib/postgresql/data
+
+
+ volumes:
+   postgres_data:
+
+
