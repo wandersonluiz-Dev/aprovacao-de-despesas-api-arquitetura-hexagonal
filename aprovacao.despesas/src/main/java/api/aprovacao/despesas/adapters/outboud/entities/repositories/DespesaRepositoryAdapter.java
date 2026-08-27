@@ -79,13 +79,18 @@ public class DespesaRepositoryAdapter implements DespesaRepositoryPort {
 
         Funcionario solicitante = paraFuncionarioDomain(entity.getSolicitante());
 
-        return new Despesa(
+        Despesa despesa = new Despesa(
                 entity.getId(),
                 entity.getValor(),
                 entity.getCategoria(),
                 entity.getDescricao(),
                 entity.getData(),
-                solicitante);
+                solicitante
+        );
+
+        despesa.restaurarStatus(entity.getStatusDespesa(), entity.getMotivoRejeicao());
+
+        return despesa;
     }
 
     private Funcionario paraFuncionarioDomain(FuncionarioJpaEntity entity) {
