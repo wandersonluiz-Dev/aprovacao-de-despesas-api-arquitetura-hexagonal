@@ -1,6 +1,6 @@
 package api.aprovacao.despesas.adapters.outboud.entities.repositories;
 
-import api.aprovacao.despesas.adapters.outboud.entities.FuncionarioJpaEntity;
+import api.aprovacao.despesas.adapters.outboud.entities.JpaFuncionarioEntity;
 import api.aprovacao.despesas.domain.funcionario.Funcionario;
 import api.aprovacao.despesas.domain.funcionario.FuncionarioRepositoryPort;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +18,8 @@ public class FuncionarioRepositoryAdapter implements FuncionarioRepositoryPort {
     @Override
     public Funcionario salvar(Funcionario funcionario) {
 
-        FuncionarioJpaEntity entity = paraJpaEntity(funcionario);
-        FuncionarioJpaEntity salva = jpaRepository.save(entity);
+        JpaFuncionarioEntity entity = paraJpaEntity(funcionario);
+        JpaFuncionarioEntity salva = jpaRepository.save(entity);
         return paraDomain(salva);
     }
 
@@ -42,9 +42,9 @@ public class FuncionarioRepositoryAdapter implements FuncionarioRepositoryPort {
         return jpaRepository.existsByNomeFuncionario(nomeFuncionario);
     }
 
-    private FuncionarioJpaEntity paraJpaEntity(Funcionario funcionario) {
+    private JpaFuncionarioEntity paraJpaEntity(Funcionario funcionario) {
 
-        FuncionarioJpaEntity entity = new FuncionarioJpaEntity();
+        JpaFuncionarioEntity entity = new JpaFuncionarioEntity();
         entity.setId(funcionario.getId());
         entity.setNomeFuncionario(funcionario.getNomeFuncionario());
         entity.setCargo(funcionario.getCargo());
@@ -52,7 +52,7 @@ public class FuncionarioRepositoryAdapter implements FuncionarioRepositoryPort {
         return entity;
     }
 
-    private Funcionario paraDomain(FuncionarioJpaEntity entity) {
+    private Funcionario paraDomain(JpaFuncionarioEntity entity) {
 
         return new Funcionario(
                 entity.getId(),

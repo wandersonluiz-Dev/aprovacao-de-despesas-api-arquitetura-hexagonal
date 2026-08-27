@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class DespesaJpaEntity {
+public class JpaDespesaEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,5 +40,5 @@ public class DespesaJpaEntity {
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-    private FuncionarioJpaEntity solicitante;
+    private JpaFuncionarioEntity solicitante;
 }
