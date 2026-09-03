@@ -1,31 +1,28 @@
- services:
-   app:
-     build: .
-     container_name: aprovacao-despesa-app
-     ports:
-       -  "8080:8080"
-     environment:
-       SPRING_DATASOURCE_URL: postgresql://db:5432/${DB_POSTGRES}
-       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USERNAME}
-       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
-     depends_on:
-       - db
+services:
+  app:
+    build: .
+    container_name: aprovacao-despesa-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - db
 
+  db:
+    image: postgres:16-alpine
+    container_name: aprovacao-despesa-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-   db:
-     image:  postgres:16-alpine
-     container_name: aprovacao-despesa-db
-     environment:
-       POSTGRES_DB: ${POSTGRES_DB}
-       POSTGRES_USER: ${POSTGRES_USER}
-       POSTGRES_PASSWORD: ${´POSTGRES_PASSWORD}
-     ports:
-       - "5432:5432"
-     volumes:
-       - postgres_data:/var/lib/postgresql/data
-
-
- volumes:
-   postgres_data:
-
+volumes:
+  postgres_data:
 
